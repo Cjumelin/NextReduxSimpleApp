@@ -9,11 +9,11 @@ export const sidebarSlice = createSlice({
     name: 'sidebar',
     initialState: sidebarInitialState,
     reducers: {
-        open: (store) => {
-            store.isOpen = true;
+        open: (state) => {
+            state.isOpen = true;
         },
-        close: (store) => {
-            store.isOpen = false;
+        close: (state) => {
+            state.isOpen = false;
         },
     },
 })
