@@ -1,19 +1,18 @@
 import storeConfigurator from "../store/store";
 import {close, open} from "../core/uiState/sidebar/sidebarSlice"
+import {Store} from "redux";
 
 describe(
     "Open/close sidebar state",
     () => {
-        let store;
+        let store:Store<any>;
         let dispatch;
-        let getState;
         beforeEach(() => {
             store = storeConfigurator();
             dispatch = store.dispatch;
-            getState = store.getState;
         })
 
-        const getSidebarState = () => getState().sidebar;
+        const getSidebarState = () => store.getState().sidebar;
 
         it("Should initially be close", () => {
             expect(getSidebarState()).toEqual({isOpen: false})
@@ -30,7 +29,7 @@ describe(
             store.dispatch(close());
         });
 
-        const listenToChangedState = (expectedState, done: () => void, actionPosition: number) => {
+        const listenToChangedState = (expectedState: any, done: () => void, actionPosition: number) => {
             let counter = 1;
             store.subscribe(() => {
                 if (counter === actionPosition) {
