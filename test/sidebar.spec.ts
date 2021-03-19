@@ -20,25 +20,25 @@ describe(
         });
 
         it("Can open the navbar", (done) => {
-            // expect(getSidebarState()).toEqual({isOpen: true})
-            store.subscribe(() => {
-                expect(store.getState().sidebar).toEqual({isOpen: true})
-                done();
-            })
-            console.log(open());
+            listenToChangedState({isOpen: true}, done, 1);
             store.dispatch(open());
         });
 
-        // const listenToChangedState = (expectedState, done: () => void, actionPosition: number) => {
-        //     let counter = 1;
-        //     store.subscribe(() => {
-        //         console.log()
-        //         if (counter === actionPosition) {
-        //             expect(getSidebarState()).toEqual(expectedState)
-        //             done();
-        //         }
-        //         counter++;
-        //     });
-        // };
+        it("Can close the navbar", (done) => {
+            listenToChangedState({isOpen: false}, done, 2);
+            store.dispatch(open());
+            store.dispatch(close());
+        });
+
+        const listenToChangedState = (expectedState, done: () => void, actionPosition: number) => {
+            let counter = 1;
+            store.subscribe(() => {
+                if (counter === actionPosition) {
+                    expect(getSidebarState()).toEqual(expectedState)
+                    done();
+                }
+                counter++;
+            });
+        };
     }
 )

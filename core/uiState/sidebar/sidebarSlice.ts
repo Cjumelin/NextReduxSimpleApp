@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { RootState } from '../../../store/rootReducer'
+import { RootState } from "../../../store/store"
 
 export const sidebarInitialState = {
     isOpen: false,
@@ -9,11 +9,11 @@ export const sidebarSlice = createSlice({
     name: 'sidebar',
     initialState: sidebarInitialState,
     reducers: {
-        open: ({isOpen}) => {
-            isOpen = true;
+        open: (store) => {
+            store.isOpen = true;
         },
-        close: ({isOpen}) => {
-            isOpen = false;
+        close: (store) => {
+            store.isOpen = false;
         },
     },
 })
