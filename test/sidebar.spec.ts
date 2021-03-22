@@ -7,6 +7,7 @@ describe(
     () => {
         let store:Store<any>;
         let dispatch;
+        
         beforeEach(() => {
             store = storeConfigurator();
             dispatch = store.dispatch;

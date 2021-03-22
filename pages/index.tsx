@@ -2,7 +2,7 @@ import Button from "@material-ui/core/Button";
 import React from "react";
 import { useRouter } from 'next/router'
 import {toggleSidebar} from "../core/ui/sidebar/sidebar"
-import NavigationBtn from "../components/navigationBtn"
+import NavigationBtn from "../core/ui/navigationBtn/navigationBtn"
 
 export default function Home() {
     const router = useRouter()
