@@ -5,28 +5,34 @@ import { open, close } from './../core/uiState/sidebar/sidebarSlice'
 import { sidebarSelector } from '../core/uiState/sidebar/sidebarSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
-export default function Drawer() {
+export default function Sidebar() {
     const dispatch = useDispatch()
     const sidebar: any = useSelector(sidebarSelector);
 
-    console.log(sidebar);
+    const openSideBar = () => {
+        dispatch(open())
+    }
+
+    const closeSideBar = () => {
+        dispatch(close())
+    }
 
     const toggleDrawer = () => {
-        dispatch(sidebar.isOpen ? close() : open())
+        sidebar.isOpen ? closeSideBar() : openSideBar()
     };
 
     const list = <div role="presentation">Menu</div>;
 
     return (
-        <div>
-            <Button onClick={toggleDrawer}>TEST</Button>
-            <SwipeableDrawer
-                open={sidebar.isOpen}
-                onClose={toggleDrawer}
-                onOpen={toggleDrawer}
+        <React.Fragment>
+            <Button onClick={toggleDrawer}>Sidebar</Button>
+            <div
+                className={(sidebar.isOpen ? "openedSidebar": "closedSidebar") + " sidebar bg-gray-400 fixed z-10"}
+                onMouseEnter={openSideBar}
+                onMouseLeave={closeSideBar}
             >
                 {list}
-            </SwipeableDrawer>
-        </div>
+            </div>
+        </React.Fragment>
     );
 }
