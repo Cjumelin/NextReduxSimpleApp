@@ -1,12 +1,36 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import {sidebarSliceReducer} from "../core/uiState/sidebar/sidebarSlice"
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER
+  } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
-export type RootState = ReturnType<T>
+const persistConfig = {
+    key: 'root',
+    version: 1,
+    storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, combineReducers({sidebar: sidebarSliceReducer}))
 
 const storeConfigurator = () => configureStore({
-    reducer: {
-        sidebar: sidebarSliceReducer
-    }
+    reducer: persistedReducer,
+    middleware: getDefaultMiddleware({
+        serializableCheck: {
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+        }
+    })
 });
 
 export default storeConfigurator;
+
+export const store = storeConfigurator();
+
+export const persistor = persistStore(store)
