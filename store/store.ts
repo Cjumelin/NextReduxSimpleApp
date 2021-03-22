@@ -1,5 +1,5 @@
 import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import {sidebarSliceReducer} from "../core/uiState/sidebar/sidebarSlice"
+import { sidebarSliceReducer } from "../core/uiState/sidebar/sidebarSlice"
 import {
     persistStore,
     persistReducer,
@@ -31,6 +31,9 @@ const storeConfigurator = () => configureStore({
 
 export default storeConfigurator;
 
+export type RootState = ReturnType<typeof persistedReducer>
+
 export const store = storeConfigurator();
+export const { dispatch, getState } = store
 
 export const persistor = persistStore(store)
