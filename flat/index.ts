@@ -1,6 +1,7 @@
 export default function() {
     let acc: Array<any> = [];
-    let arr = this;
+    let arr = [ ...this];
+
     arr.forEach(child => {
         if (Array.isArray(child)) {
             return acc = [...acc, ...child];
@@ -8,5 +9,5 @@ export default function() {
         return acc = [...acc, child]
     });
 
-    return (acc.length ? acc : this);
+    return (acc.length ? acc : arr);
 };
