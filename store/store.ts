@@ -1,5 +1,5 @@
 import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import { sidebarSliceReducer } from "../core/uiState/sidebar/sidebarSlice"
+import { sidebarSliceReducer } from "../core/ui/sidebar/sidebarSlice"
 import {
     persistStore,
     persistReducer,

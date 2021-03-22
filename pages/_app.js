@@ -5,7 +5,7 @@ import '../styles/tailwind.output.css';
 import Header from "../components/header";
 import React from "react";
 import { PersistGate } from 'redux-persist/integration/react'
-import Sidebar from "../core/uiState/sidebar/sidebar.component"
+import Sidebar from "../core/ui/sidebar/sidebar.component"
 
 const MyApp = ({ Component, pageProps }) => {
   return (

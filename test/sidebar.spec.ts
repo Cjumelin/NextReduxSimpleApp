@@ -1,5 +1,5 @@
 import storeConfigurator from "../store/store";
-import {close, open} from "../core/uiState/sidebar/sidebarSlice"
+import {close, open} from "../core/ui/sidebar/sidebarSlice"
 import {Store} from "redux";
 
 describe(
