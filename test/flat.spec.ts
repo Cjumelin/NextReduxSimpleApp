@@ -1,8 +1,8 @@
 import flat from "../flat"
 
 declare global {
-    interface Array {
-        customFlat(): Array  
+    interface Array<T> {
+        customFlat(): Array<any>  
     }
 }
 
@@ -15,7 +15,7 @@ describe(
             Array.prototype.customFlat = flat
         })
 
-        const toTest = (msg: string, toTest: Array) => { 
+        const toTest = (msg: string, toTest: Array<any>) => { 
             it(msg, () => {
                 expect(toTest.customFlat()).toEqual(toTest.flat())
             });
@@ -50,6 +50,9 @@ describe(
         );
 
         toTest("Test input from the spec", [[1,2], [3,4], [5,6], [7,8]])
+
+
+        toTest("Test input from the spec", [[1,2], [3,4], [5,6], [7,8], [1,2], [3,4], [5,6], [7,8], [[[1,2], [3,4], [5,6], [7,8]]]])
 
        }
 )
