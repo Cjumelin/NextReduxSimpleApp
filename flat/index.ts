@@ -1,6 +1,6 @@
 export default function() {
     let acc: Array<any> = [];
-    let arr = [ ...this];
+    let arr: Array<any> = [ ...this];
 
     arr.forEach(child => {
         if (Array.isArray(child)) {
