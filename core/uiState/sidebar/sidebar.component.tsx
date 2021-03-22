@@ -1,8 +1,8 @@
 import React from "react";
-import { sidebarSelector } from '../core/uiState/sidebar/sidebarSlice'
+import { sidebarSelector } from './sidebarSlice'
 import { useSelector } from 'react-redux'
-import {openSideBar, closeSideBar} from "../core/uiState/sidebar/sidebar"
-import NavigationBtn from "./navigationBtn";
+import {openSideBar, closeSideBar} from "./sidebar"
+import NavigationBtn from "../../../components/navigationBtn";
 
 export default function Sidebar() {
     const sidebar: any = useSelector(sidebarSelector);

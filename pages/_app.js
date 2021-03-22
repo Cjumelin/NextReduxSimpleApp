@@ -2,10 +2,10 @@ import { Provider } from 'react-redux'
 import {store, persistor} from "../store/store";
 import '../styles/globals.css'
 import '../styles/tailwind.output.css';
-import Header from "../componenents/header";
+import Header from "../components/header";
 import React from "react";
 import { PersistGate } from 'redux-persist/integration/react'
-import Sidebar from "../componenents/sidebar"
+import Sidebar from "../core/uiState/sidebar/sidebar.component"
 
 const MyApp = ({ Component, pageProps }) => {
   return (
