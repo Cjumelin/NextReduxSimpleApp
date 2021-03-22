@@ -9,5 +9,5 @@ export default function() {
         return acc = [...acc, child]
     });
 
-    return (acc.length ? acc : arr);
+    return acc;
 };
